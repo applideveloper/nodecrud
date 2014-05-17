@@ -5,6 +5,8 @@ block content
   h1= title
   p Welcome to #{title}
   p#msg #{msg}
+  p
+    a(href="/find")= '検索'
   
   form(action='/',method='post')
     input(type='text',name='name')
@@ -27,3 +29,8 @@ block content
         td= data.mail
         td= data.memo
           a(href="/delete/#{data._id}")= '削除'
+      span
+    a(href='/index/#{parseInt(page) - 1}')= '<<prev'
+    span |
+    span
+      a(href='/index/#{parseInt(page) + 1}')= 'next>>'

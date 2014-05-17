@@ -26,16 +26,36 @@ exports.index = function(req, res){
 //                        datas : docs
 //                });
 //        });
-        MyData.where().sort({'mail':'asc'}).exec(function(err, docs) {
+
+//        MyData.where().sort({'mail':'asc'}).exec(function(err, docs) {
+//                if (err) {
+//                        console.log(err);
+//                }
+//                res.render('index', {
+//                        title : 'Express',
+//                        msg : 'データの一覧リスト',
+//                        datas : docs
+//                });
+//        });
+        console.log(req.params.page);
+        var page = req.params.page < 1 ? 1 : req.params.page;
+        if (!page) page = 1;
+        var volume = 5; // ☆１ページ当たりの表示データ数
+        MyData.where().sort({
+                'name' : 'asc'
+        }).skip((page - 1) * volume).limit(volume)
+        .exec(function(err, docs) {
                 if (err) {
                         console.log(err);
                 }
                 res.render('index', {
                         title : 'Express',
-                        msg : 'データの一覧リスト',
+                        msg : page + 'ページ目のデータ',
+                        page: page,
                         datas : docs
                 });
         });
+
 };
 
 exports.index_post = function(req, res) {

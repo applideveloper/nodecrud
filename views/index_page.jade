@@ -5,7 +5,18 @@ block content
   h1= title
   p Welcome to #{title}
   p#msg #{msg}
+  p
+    a(href="/find")= '検索'
   
+  form(action='/',method='post')
+    input(type='text',name='name')
+    br
+    input(type='text',name='mail')
+    br
+    input(type='text',name='memo')
+    br
+    input(type='submit' value='send')
+  hr
   table(border='1')
     tr
       th Name
@@ -13,11 +24,13 @@ block content
       th memo
     - each data in datas
       tr
-        td= data.name
+        td
+          a(href="/edit/#{data._id}")= data.name
         td= data.mail
         td= data.memo
-  span
+          a(href="/delete/#{data._id}")= '削除'
+      span
     a(href='/index/#{parseInt(page) - 1}')= '<<prev'
-  span |
-  span
-    a(href='/index/#{parseInt(page) + 1}')= 'next>>'
+    span |
+    span
+      a(href='/index/#{parseInt(page) + 1}')= 'next>>'
