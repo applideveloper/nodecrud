@@ -37,7 +37,7 @@ exports.index = function(req, res){
 //                        datas : docs
 //                });
 //        });
-        console.log(req.params.page);
+
         var page = req.params.page < 1 ? 1 : req.params.page;
         if (!page) page = 1;
         var volume = 5; // ☆１ページ当たりの表示データ数
@@ -86,7 +86,7 @@ exports.edit = function(req, res) {
                         console.log(err);
                 }
                 res.render('edit', {
-                        title : 'Express',
+                        title : 'Node+MongoでCRUDアプリケーション',
                         msg : 'データの更新',
                         data : doc
                 });
@@ -125,7 +125,7 @@ exports.del = function(req, res) {
                         console.log(err);
                 }
                 res.render('delete', {
-                        title : 'Express',
+                        title : 'Node+MongoでCRUDアプリケーション',
                         msg : 'データの削除',
                         data : doc
                 });
@@ -152,7 +152,7 @@ exports.remove = function(req, res) {
 
 exports.find = function(req, res) {
         res.render('find', {
-                title : 'Express',
+                title : 'Node+MongoでCRUDアプリケーション',
                 msg : 'データの検索',
                 find : 'テキストを入力...',
                 datas : []
@@ -198,7 +198,7 @@ exports.find_post = function(req, res) {
         MyData.where().or(fset)
                 .exec(function(err, result) {
                 res.render('find', {
-                        title : 'Express',
+                        title : 'Node+MongoでCRUDアプリケーション',
                         msg : 'データの検索',
                         find : fstr,
                         datas : result
@@ -218,7 +218,7 @@ exports.index_page = function(req, res) {
                         console.log(err);
                 }
                 res.render('index_page', {
-                        title : 'Express',
+                        title : 'Node+MongoでCRUDアプリケーション',
                         msg : page + 'ページ目のデータ',
                         page: page,
                         datas : docs

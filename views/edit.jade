@@ -3,7 +3,8 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  p
+    a(href="/")= '戻る'
   p#msg #{msg}
   form(method='post',action='/update')
     input(type='hidden',name='id',value='#{data._id}')
