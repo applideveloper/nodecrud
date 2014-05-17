@@ -1,0 +1,24 @@
+extends layout
+
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p#msg #{msg}
+  
+  table(border='1')
+    tr
+      th Name
+      th Mail
+      th memo
+    - each data in datas
+      tr
+        td= data.name
+        td= data.mail
+        td= data.memo
+  span
+    a(href='/index/#{parseInt(page) - 1}')= '<<prev'
+  span
+    ｜
+  span
+    a(href='/index/#{parseInt(page) + 1}')= 'next>>'

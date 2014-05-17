@@ -1,0 +1,26 @@
+extends layout
+
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p#msg #{msg}
+  form(method='post',action='/update')
+    input(type='hidden',name='id',value='#{data._id}')
+    table
+      tr
+        td Name
+        td
+          input(type='text',name='name',value='#{data.name}')
+      tr
+        td Mail
+        td
+          input(type='text',name='mail',value='#{data.mail}')
+      tr
+        td Memo
+        td
+          input(type='text',name='memo',value='#{data.memo}')
+      tr
+        td
+        td
+          input(type='submit',value='送信')

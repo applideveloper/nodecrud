@@ -1,0 +1,29 @@
+extends layout
+
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p#msg #{msg}
+  
+  form(action='/',method='post')
+    input(type='text',name='name')
+    br
+    input(type='text',name='mail')
+    br
+    input(type='text',name='memo')
+    br
+    input(type='submit' value='send')
+  hr
+  table(border='1')
+    tr
+      th Name
+      th Mail
+      th memo
+    - each data in datas
+      tr
+        td
+          a(href="/edit/#{data._id}")= data.name
+        td= data.mail
+        td= data.memo
+          a(href="/delete/#{data._id}")= '削除'

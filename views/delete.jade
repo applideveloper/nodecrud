@@ -1,0 +1,11 @@
+extends layout
+
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p#msg #{msg}
+  p= 'name:' + data.name
+  form(method='post',action='/remove')
+    input(type='hidden',name='id',value='#{data._id}')
+    input(type='submit',value='削除する')

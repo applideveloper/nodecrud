@@ -1,0 +1,22 @@
+extends layout
+
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p#msg #{msg}
+  form(method='post',action='/find')
+    p FIND: 
+      input(type='text',name='find',value='#{find}')
+      input(type='submit',value='検索')
+  hr
+  table(border="1")
+    tr
+      th Name
+      th Mail
+      th memo
+    - each data in datas
+      tr
+        td= data.name
+        td= data.mail
+        td= data.memo
